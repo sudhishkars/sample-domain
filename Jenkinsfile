@@ -15,7 +15,7 @@ pipeline {
           script {
             sh "mvn $MVN_ARGS clean package"
 
-            sh "mvn $MVN_ARGS -X -Pstandalone-agent mule:deploy -Dmule.artifact=target/*.jar -Djavax.net.debug=all"
+            sh "mvn $MVN_ARGS -X -Pstandalone-agent -Djavax.net.debug=all mule:deploy -Dmule.artifact=target/sample-domain-1.0.0-SNAPSHOT-mule-domain.jar"
           }
         }
       }
