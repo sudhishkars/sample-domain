@@ -25,6 +25,27 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 			</plugin>
+<!-- 	        <plugin>
+	            <groupId>org.mule.tools.maven</groupId>
+	            <artifactId>exchange-mule-maven-plugin</artifactId>
+	            <version>0.0.13</version>
+	            <executions>
+	                <execution>
+	                    <id>validate</id>
+	                    <phase>validate</phase>
+	                    <goals>
+	                        <goal>exchange-pre-deploy</goal>
+	                    </goals>
+	                </execution>
+	                <execution>
+	                    <id>deploy</id>
+	                    <phase>deploy</phase>
+	                    <goals>
+	                        <goal>exchange-deploy</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin> -->			
 		</plugins>
 	</build>
 
@@ -122,6 +143,7 @@
 						    <agentDeployment>
 						    	<applicationName>${env.APP_NAME}</applicationName>
 						      	<uri>http://localhost:9995/</uri>
+						      	<muleVersion>4.4.0-20230123</muleVersion>
 						    </agentDeployment>
 						</configuration>
 					</plugin>
