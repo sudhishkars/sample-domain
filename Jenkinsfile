@@ -13,7 +13,9 @@ pipeline {
       stage('deploy') {
         steps {
           script {
-            sh "mvn $MVN_ARGS -Pstandalone-agent deploy mule:deploy"
+            sh "mvn $MVN_ARGS clean package"
+
+            sh "mvn $MVN_ARGS -Pstandalone-agent mule:deploy -Dmule.artifact=target/*.jar"
           }
         }
       }
