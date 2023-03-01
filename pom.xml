@@ -69,5 +69,65 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<profiles>
+		<profile>
+			<id>hybrid</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.mule.tools.maven</groupId>
+						<artifactId>mule-maven-plugin</artifactId>
+						<version>${mule.maven.plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<classifier>mule-application</classifier>
+							<armDeployment>
+								<uri>https://anypoint.mulesoft.com</uri>
+								<username>${u}</username>
+								<password>${p}</password>
+								<target>${deploy.target}</target>
+								<targetType>${deploy.targetType}</targetType>
+								<environment>${deploy.environment}</environment>
+								<muleVersion>${app.runtime}</muleVersion>
+								<businessGroup>${deploy.businessGroup}</businessGroup>
+								<applicationName>${hybrid.name}</applicationName>
+								<connectedAppClientId>${env.CONNECTED_APP_CLIENT_ID}</connectedAppClientId>
+								<connectedAppClientSecret>${env.CONNECTED_APP_CLIENT_SECRET}</connectedAppClientSecret>
+								<connectedAppGrantType>client_credentials</connectedAppGrantType>								
+								<properties>
+									<api.name>${project.artifactId}</api.name>
+									<api.base>${api.base}</api.base>
+									<api.version>${api.version}</api.version>
+									<project.version>${project.version}</project.version>
+									<my.client_secret>${my.client_secret}</my.client_secret>
+								</properties>
+							</armDeployment>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>standalone-agent</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.mule.tools.maven</groupId>
+						<artifactId>mule-maven-plugin</artifactId>
+						<version>${mule.maven.plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<classifier>mule-application</classifier>
+						    <agentDeployment>
+						    	<applicationName>${env.APP_NAME}</applicationName>
+						      	<uri>http://localhost:9995/</uri>
+						    </agentDeployment>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>		
+	</profiles>		
 
 </project>
